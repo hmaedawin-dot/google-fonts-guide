@@ -3,10 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>迷ったらこれ。定番Google Fonts</title>
+<title>フォントまとめ — Google Fonts おすすめ</title>
 <style>
-/* webfonts (Google Fonts CDN — loaded online) */
-   @import rules MUST precede all other CSS, so this file holds
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;500;600;700;800&family=Zen+Old+Mincho:wght@400;500;600;700;900&family=Kaisei+Decol:wght@400;500;700&family=Hina+Mincho&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&family=Zen+Maru+Gothic:wght@400;500;700;900&family=M+PLUS+1p:wght@400;500;700;800&family=Kosugi+Maru&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Marcellus&family=Cinzel:wght@400;500;600;700;800;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Domine:wght@400;500;600;700&family=Linden+Hill:ital@0;1&family=Prata&display=swap');
@@ -207,15 +205,13 @@
   --dur-slow: 420ms; /* @kind other */
 }
 
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--accent); }
-::selection { background: var(--accent-soft); }
-input::placeholder { color: var(--ink-4); }
+*{box-sizing:border-box}html,body{margin:0;padding:0}body{background:var(--accent)}::selection{background:var(--accent-soft)}input::placeholder{color:var(--ink-4)}a{color:var(--cat-serif);text-decoration:none}a:hover{color:var(--cat-numerals);text-decoration:underline}
 </style>
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 <script>
+
 (() => {
 
 const __ds_ns = (window.DesignSystem_74b1d1 = window.DesignSystem_74b1d1 || {});
@@ -846,7 +842,7 @@ function WeightScale({
 Object.assign(__ds_scope, { WeightScale });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/specimen/WeightScale.jsx", error: String((e && e.message) || e) }); }
 
-// ui_kits/font-matome/data.js
+// download/font-matome/data.js
 try { (() => {
 /* Font dataset for the まとめ UI kit. Plain global script (not Babel). */
 window.CATEGORY_META = {
@@ -1199,12 +1195,12 @@ window.FONT_DATA = [/* === 明朝体 === */
   note: "丸みのある親しみやすい数字。フレンドリーな表現に。",
   sampleWeight: 400
 }];
-})(); } catch (e) { __ds_ns.__errors.push({ path: "ui_kits/font-matome/data.js", error: String((e && e.message) || e) }); }
+})(); } catch (e) { __ds_ns.__errors.push({ path: "download/font-matome/data.js", error: String((e && e.message) || e) }); }
 
-// ui_kits/font-matome/screens.jsx
+// download/font-matome/screens.jsx
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-/* まとめ — Google Fonts おすすめまとめ. Mounted by index.html.
+/* まとめ — Google Fonts おすすめまとめ. Mounted by FontMatome.dc.html.
    Layout: fixed yellow left sidebar (category card-buttons = in-page links)
    + MV door (yellow, no buttons) + stacked per-category colored sections. */
 const {
@@ -1213,12 +1209,9 @@ const {
   useEffect,
   useRef
 } = React;
-const {
-  FontSpecimen,
-  CategoryButton
-} = window.DesignSystem_74b1d1;
-const FONTS = window.FONT_DATA;
-const CATS = window.CATEGORY_META;
+const DS = () => window.DesignSystem_74b1d1 || {};
+const getFonts = () => window.FONT_DATA || [];
+const getCats = () => window.CATEGORY_META || {};
 const ORDER = ["mincho", "gothic", "serif", "sans", "numerals"];
 const SIDEBAR_W = 256;
 function scrollToId(id) {
@@ -1240,6 +1233,11 @@ function scrollToId(id) {
 function Sidebar({
   active
 }) {
+  const {
+    CategoryButton
+  } = DS();
+  const FONTS = getFonts();
+  const CATS = getCats();
   return /*#__PURE__*/React.createElement("aside", {
     style: {
       position: "fixed",
@@ -1339,7 +1337,7 @@ function MV({
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
-      padding: "var(--sp-9)"
+      padding: mobile ? "var(--sp-5)" : "var(--sp-9)"
     }
   }, /*#__PURE__*/React.createElement("p", {
     style: {
@@ -1401,7 +1399,11 @@ function CategorySection({
   catKey,
   mobile
 }) {
-  const c = CATS[catKey];
+  const {
+    FontSpecimen
+  } = DS();
+  const FONTS = getFonts();
+  const c = getCats()[catKey];
   const HEADING_FONT = {
     mincho: "'Shippori Mincho', 'EB Garamond', serif",
     gothic: "'Noto Sans JP', 'Inter', sans-serif",
@@ -1530,6 +1532,7 @@ function useIsMobile(bp = 900) {
 function MobileMenu({
   active
 }) {
+  const CATS = getCats();
   return /*#__PURE__*/React.createElement("nav", {
     style: {
       position: "sticky",
@@ -1572,6 +1575,17 @@ function MobileMenu({
 function App() {
   const [active, setActive] = useState("home");
   const isMobile = useIsMobile();
+  const [ready, setReady] = useState(!!(window.DesignSystem_74b1d1 && window.FONT_DATA));
+  useEffect(() => {
+    if (ready) return;
+    const t = setInterval(() => {
+      if (window.DesignSystem_74b1d1 && window.FONT_DATA) {
+        setReady(true);
+        clearInterval(t);
+      }
+    }, 60);
+    return () => clearInterval(t);
+  }, [ready]);
 
   /* scroll-spy: highlight the section currently in view */
   useEffect(() => {
@@ -1596,7 +1610,7 @@ function App() {
       background: "var(--accent)",
       display: "flex",
       justifyContent: "center",
-      padding: "var(--sp-8) var(--sp-9)"
+      padding: isMobile ? "var(--sp-5) var(--sp-5)" : "var(--sp-8) var(--sp-9)"
     }
   }, /*#__PURE__*/React.createElement("button", {
     onClick: () => scrollToId("home"),
@@ -1620,6 +1634,12 @@ function App() {
       fontSize: 18
     }
   }, "\u2191"), "\u30DA\u30FC\u30B8\u30C8\u30C3\u30D7\u3078\u623B\u308B"));
+  if (!ready) return /*#__PURE__*/React.createElement("div", {
+    style: {
+      minHeight: "100vh",
+      background: "var(--accent)"
+    }
+  });
 
   /* ---- mobile: stacked MV → sticky menu → sections ---- */
   if (isMobile) {
@@ -1657,8 +1677,8 @@ function App() {
     catKey: k
   })), backToTop));
 }
-ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.createElement(App, null));
-})(); } catch (e) { __ds_ns.__errors.push({ path: "ui_kits/font-matome/screens.jsx", error: String((e && e.message) || e) }); }
+window.FontMatomeApp = App;
+})(); } catch (e) { __ds_ns.__errors.push({ path: "download/font-matome/screens.jsx", error: String((e && e.message) || e) }); }
 
 __ds_ns.Button = __ds_scope.Button;
 
@@ -1748,15 +1768,15 @@ window.FONT_DATA = [
 </script>
 </head>
 <body>
-  <div id="root"></div>
-  <script type="text/babel">
-/* まとめ — Google Fonts おすすめまとめ. Mounted by index.html.
+<div id="root"></div>
+<script type="text/babel" data-presets="react">
+/* まとめ — Google Fonts おすすめまとめ. Mounted by FontMatome.dc.html.
    Layout: fixed yellow left sidebar (category card-buttons = in-page links)
    + MV door (yellow, no buttons) + stacked per-category colored sections. */
 const { useState, useMemo, useEffect, useRef } = React;
-const { FontSpecimen, CategoryButton } = window.DesignSystem_74b1d1;
-const FONTS = window.FONT_DATA;
-const CATS = window.CATEGORY_META;
+const DS = () => window.DesignSystem_74b1d1 || {};
+const getFonts = () => window.FONT_DATA || [];
+const getCats = () => window.CATEGORY_META || {};
 const ORDER = ["mincho", "gothic", "serif", "sans", "numerals"];
 
 const SIDEBAR_W = 256;
@@ -1769,6 +1789,9 @@ function scrollToId(id) {
 
 /* ---------- Sidebar (fixed, main yellow) — category card-buttons ---------- */
 function Sidebar({ active }) {
+  const { CategoryButton } = DS();
+  const FONTS = getFonts();
+  const CATS = getCats();
   return (
     <aside style={{
       position: "fixed", top: 0, left: 0, bottom: 0, width: SIDEBAR_W, zIndex: 30,
@@ -1814,7 +1837,7 @@ function Sidebar({ active }) {
 function MV({ mobile }) {
   return (
     <section id="home" style={{ background: "var(--accent)", color: "var(--accent-ink)", minHeight: "100vh",
-      display: "flex", flexDirection: "column", justifyContent: "center", padding: "var(--sp-9)" }}>
+      display: "flex", flexDirection: "column", justifyContent: "center", padding: mobile ? "var(--sp-5)" : "var(--sp-9)" }}>
       <p style={{ margin: 0, fontFamily: "var(--font-label)", fontSize: 13, fontWeight: 600,
         letterSpacing: "0.18em", textTransform: "uppercase", opacity: 0.7 }}>
         Recommended Google Fonts
@@ -1839,7 +1862,9 @@ function MV({ mobile }) {
 
 /* ---------- Category section (own background color) ---------- */
 function CategorySection({ catKey, mobile }) {
-  const c = CATS[catKey];
+  const { FontSpecimen } = DS();
+  const FONTS = getFonts();
+  const c = getCats()[catKey];
   const HEADING_FONT = {
     mincho: "'Shippori Mincho', 'EB Garamond', serif",
     gothic: "'Noto Sans JP', 'Inter', sans-serif",
@@ -1909,6 +1934,7 @@ function useIsMobile(bp = 900) {
 
 /* horizontal category menu — flows after the MV, sticks to top once passed */
 function MobileMenu({ active }) {
+  const CATS = getCats();
   return (
     <nav style={{ position: "sticky", top: 0, zIndex: 40, background: "var(--accent)",
       boxShadow: "var(--shadow-md)", padding: "10px 12px", display: "flex", gap: 8,
@@ -1936,6 +1962,14 @@ function MobileMenu({ active }) {
 function App() {
   const [active, setActive] = useState("home");
   const isMobile = useIsMobile();
+  const [ready, setReady] = useState(!!(window.DesignSystem_74b1d1 && window.FONT_DATA));
+  useEffect(() => {
+    if (ready) return;
+    const t = setInterval(() => {
+      if (window.DesignSystem_74b1d1 && window.FONT_DATA) { setReady(true); clearInterval(t); }
+    }, 60);
+    return () => clearInterval(t);
+  }, [ready]);
 
   /* scroll-spy: highlight the section currently in view */
   useEffect(() => {
@@ -1956,7 +1990,7 @@ function App() {
 
   const backToTop = (
     <div style={{ background: "var(--accent)", display: "flex", justifyContent: "center",
-      padding: "var(--sp-8) var(--sp-9)" }}>
+      padding: isMobile ? "var(--sp-5) var(--sp-5)" : "var(--sp-8) var(--sp-9)" }}>
       <button onClick={() => scrollToId("home")} style={{ cursor: "pointer", background: "var(--accent-ink)",
         border: "none", color: "var(--accent)", borderRadius: "var(--radius-md)", fontFamily: "var(--font-ui-jp)",
         fontSize: 15, fontWeight: 600, padding: "14px 28px", display: "inline-flex", alignItems: "center", gap: 10 }}>
@@ -1965,6 +1999,8 @@ function App() {
       </button>
     </div>
   );
+
+  if (!ready) return <div style={{ minHeight: "100vh", background: "var(--accent)" }} />;
 
   /* ---- mobile: stacked MV → sticky menu → sections ---- */
   if (isMobile) {
@@ -1991,8 +2027,9 @@ function App() {
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+window.FontMatomeApp = App;
 
-  </script>
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
 </body>
 </html>
