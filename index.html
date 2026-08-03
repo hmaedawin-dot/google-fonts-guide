@@ -1,0 +1,2000 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>迷ったらこれ。定番Google Fonts</title>
+<style>
+/* webfonts (Google Fonts CDN — loaded online) */
+   @import rules MUST precede all other CSS, so this file holds
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;500;600;700;800&family=Zen+Old+Mincho:wght@400;500;600;700;900&family=Kaisei+Decol:wght@400;500;700&family=Hina+Mincho&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&family=Zen+Maru+Gothic:wght@400;500;700;900&family=M+PLUS+1p:wght@400;500;700;800&family=Kosugi+Maru&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Marcellus&family=Cinzel:wght@400;500;600;700;800;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Domine:wght@400;500;600;700&family=Linden+Hill:ital@0;1&family=Prata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Questrial&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,400&family=Aldrich&family=Cousine:ital,wght@0,400;0,700;1,400&family=Josefin+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400&family=Oswald:wght@300;400;500;600;700&family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&family=Kameron:wght@400;500;600;700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Copse&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Droid+Serif:400,700&display=swap');
+</style>
+<style>
+/* ============================================================
+   colors.css — palette tokens
+   Editorial "paper + ink" base, with four 和色-inspired category
+   accents used to wayfind between font groups.
+   ============================================================ */
+:root {
+  /* --- Ink (foreground) --- */
+  --ink-1: #1B1B1B;       /* primary text, near-black neutral */
+  --ink-2: #464646;       /* secondary text */
+  --ink-3: #777777;       /* muted / captions */
+  --ink-4: #ABABAB;       /* faint */
+
+  /* --- Paper (surfaces) — neutral grays from #E8E8E8 base --- */
+  --paper-1: #F7F7F7;     /* page background */
+  --paper-2: #EFEFEF;     /* sunken / alt rows */
+  --paper-3: #E6E6E6;     /* cards on paper-2 */
+  --paper-pure: #FFFFFF;  /* specimen canvas */
+
+  /* --- Lines & strokes --- */
+  --line-1: #E0E0E0;      /* hairline dividers */
+  --line-2: #CFCFCF;      /* stronger borders */
+  --line-ink: #1B1B1B;    /* full-ink rule (editorial) */
+
+  /* --- Brand accent: base gray #E8E8E8 — umbrella over all categories --- */
+  --accent: #E8E8E8;
+  --accent-hover: #D6D6D6;
+  --accent-soft: #F2F2F2;
+  --accent-ink: #2B2B2B;   /* legible text/icon on --accent */
+
+  /* --- Category accents --- */
+  --cat-mincho: #5A73F8;        /* 明朝体 — gradient step 1 (lightest, white-safe) */
+  --cat-mincho-soft: #E4E9FE;
+  --cat-gothic: #4863F2;        /* ゴシック体 — step 2 */
+  --cat-gothic-soft: #E2E7FD;
+  --cat-serif: #3153F6;         /* serif — step 3 (anchor) */
+  --cat-serif-soft: #E1E6FD;
+  --cat-sans: #2440C2;          /* sans-serif — step 4 */
+  --cat-sans-soft: #DCE1F3;
+  --cat-numerals: #182B82;      /* 数字 — step 5 (deepest) */
+  --cat-numerals-soft: #DDE0EE;
+
+  /* --- Semantic aliases --- */
+  --bg-page: var(--paper-1);
+  --bg-sunken: var(--paper-2);
+  --surface-card: var(--paper-pure);
+  --text-heading: var(--ink-1);
+  --text-body: var(--ink-2);
+  --text-muted: var(--ink-3);
+  --border-hairline: var(--line-1);
+  --border-strong: var(--line-2);
+  --link: var(--accent);
+}
+
+/* ============================================================
+   typography.css — type tokens
+   Font-family stacks for every featured face, plus the UI type
+   scale used across the system and cards.
+   ============================================================ */
+:root {
+  /* === UI faces (the system's own chrome) === */
+  --font-ui-jp: "Noto Sans JP", system-ui, sans-serif;
+  --font-ui-display: "Montserrat", "Noto Sans JP", sans-serif;
+  --font-ui-mono: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-label: "Montserrat", "Noto Sans JP", sans-serif; /* eyebrows / latin labels */
+
+  /* === 明朝体 (Japanese serif) === */
+  --font-noto-serif-jp: "Noto Serif JP", serif;
+  --font-shippori: "Shippori Mincho", serif;
+  --font-zen-old-mincho: "Zen Old Mincho", serif;
+  --font-kaisei-decol: "Kaisei Decol", serif;
+  --font-hina-mincho: "Hina Mincho", serif;
+
+  /* === ゴシック体 (Japanese sans) === */
+  --font-noto-sans-jp: "Noto Sans JP", sans-serif;
+  --font-zen-kaku: "Zen Kaku Gothic New", sans-serif;
+  --font-zen-maru: "Zen Maru Gothic", sans-serif;
+  --font-mplus1p: "M PLUS 1p", sans-serif;
+  --font-kosugi-maru: "Kosugi Maru", sans-serif;
+
+  /* === serif (Latin) === */
+  --font-crimson-text: "Crimson Text", serif;
+  --font-marcellus: "Marcellus", serif;
+  --font-cinzel: "Cinzel", serif;
+  --font-eb-garamond: "EB Garamond", serif;
+  --font-libre-baskerville: "Libre Baskerville", serif;
+  --font-domine: "Domine", serif;
+  --font-linden-hill: "Linden Hill", serif;
+  --font-prata: "Prata", serif;
+
+  /* === sans-serif (Latin) === */
+  --font-hanken-grotesk: "Hanken Grotesk", system-ui, sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-barlow-condensed: "Barlow Condensed", sans-serif;
+  --font-questrial: "Questrial", sans-serif;
+  --font-lato: "Lato", sans-serif;
+  --font-aldrich: "Aldrich", sans-serif;
+  --font-cousine: "Cousine", monospace;
+  --font-josefin-sans: "Josefin Sans", sans-serif;
+  --font-roboto: "Roboto", sans-serif;
+  --font-oswald: "Oswald", sans-serif;
+
+  /* === 数字 (numerals — beautiful lining figures) === */
+  --font-droid-serif: "Droid Serif", "Noto Serif", serif;
+  --font-roboto-condensed: "Roboto Condensed", sans-serif;
+  --font-titillium-web: "Titillium Web", sans-serif;
+  --font-kameron: "Kameron", serif;
+  --font-old-standard-tt: "Old Standard TT", serif;
+  --font-copse: "Copse", serif;
+  --font-open-sans: "Open Sans", sans-serif;
+  --font-varela-round: "Varela Round", sans-serif;
+
+  /* === Type scale (UI) === */
+  --fs-eyebrow: 0.75rem;   /* 12px */
+  --fs-caption: 0.8125rem; /* 13px */
+  --fs-body-sm: 0.9375rem; /* 15px */
+  --fs-body: 1.0625rem;    /* 17px */
+  --fs-lead: 1.25rem;      /* 20px */
+  --fs-h4: 1.5rem;         /* 24px */
+  --fs-h3: 2rem;           /* 32px */
+  --fs-h2: 2.75rem;        /* 44px */
+  --fs-h1: 4rem;           /* 64px */
+  --fs-display: 6rem;      /* 96px */
+
+  /* === Line heights === */
+  --lh-tight: 1.12; /* @kind other */
+  --lh-snug: 1.35; /* @kind other */
+  --lh-body: 1.75; /* @kind other */ /* generous, for JP reading */
+  --lh-loose: 2; /* @kind other */
+
+  /* === Tracking === */
+  --ls-eyebrow: 0.18em; /* @kind other */
+  --ls-label: 0.04em; /* @kind other */
+  --ls-tight: -0.01em; /* @kind other */
+
+  /* === Weights === */
+  --fw-light: 300; /* @kind other */
+  --fw-regular: 400; /* @kind other */
+  --fw-medium: 500; /* @kind other */
+  --fw-bold: 700; /* @kind other */
+  --fw-black: 900; /* @kind other */
+}
+
+/* ============================================================
+   spacing.css — spacing, radius, shadow, layout tokens
+   8px-based rhythm with a few editorial wides.
+   ============================================================ */
+:root {
+  /* === Spacing scale === */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+  --sp-9: 96px;
+  --sp-10: 128px;
+
+  /* === Radii (restrained, editorial) === */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+
+  /* === Borders === */
+  --bw-hair: 1px;
+  --bw-strong: 1.5px;
+  --bw-rule: 2px;
+
+  /* === Shadows (soft, warm-tinted, low) === */
+  --shadow-xs: 0 1px 2px rgba(27, 25, 22, 0.05);
+  --shadow-sm: 0 2px 8px rgba(27, 25, 22, 0.06);
+  --shadow-md: 0 8px 24px rgba(27, 25, 22, 0.08);
+  --shadow-lg: 0 18px 48px rgba(27, 25, 22, 0.10);
+  --shadow-xl: 0 24px 56px rgba(27, 25, 22, 0.26), 0 8px 18px rgba(27, 25, 22, 0.16);
+
+  /* === Layout === */
+  --container: 1120px;
+  --container-narrow: 760px;
+  --gutter: var(--sp-6);
+
+  /* === Motion === */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1); /* @kind other */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1); /* @kind other */
+  --dur-fast: 140ms; /* @kind other */
+  --dur: 240ms; /* @kind other */
+  --dur-slow: 420ms; /* @kind other */
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--accent); }
+::selection { background: var(--accent-soft); }
+input::placeholder { color: var(--ink-4); }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script>
+/* @ds-bundle: {"format":3,"namespace":"DesignSystem_74b1d1","components":[{"name":"Button","sourcePath":"components/core/Button.jsx"},{"name":"Card","sourcePath":"components/core/Card.jsx"},{"name":"CategoryButton","sourcePath":"components/core/CategoryButton.jsx"},{"name":"CATEGORIES","sourcePath":"components/specimen/CategoryBadge.jsx"},{"name":"CategoryBadge","sourcePath":"components/specimen/CategoryBadge.jsx"},{"name":"FontSpecimen","sourcePath":"components/specimen/FontSpecimen.jsx"},{"name":"GlyphSet","sourcePath":"components/specimen/GlyphSet.jsx"},{"name":"WeightScale","sourcePath":"components/specimen/WeightScale.jsx"}],"sourceHashes":{"components/core/Button.jsx":"b68d67235819","components/core/Card.jsx":"b438ddaf291c","components/core/CategoryButton.jsx":"4aee061b0844","components/specimen/CategoryBadge.jsx":"e95e1fc331f6","components/specimen/FontSpecimen.jsx":"94ab925a9b90","components/specimen/GlyphSet.jsx":"0f467a16117a","components/specimen/WeightScale.jsx":"74bfe01e4085","ui_kits/font-matome/data.js":"447338182876","ui_kits/font-matome/screens.jsx":"d55aad643c5d"},"inlinedExternals":[],"unexposedExports":[]} */
+
+(() => {
+
+const __ds_ns = (window.DesignSystem_74b1d1 = window.DesignSystem_74b1d1 || {});
+
+const __ds_scope = {};
+
+(__ds_ns.__errors = __ds_ns.__errors || []);
+
+// components/core/Button.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const SIZES = {
+  sm: {
+    fontSize: "13px",
+    padding: "8px 16px"
+  },
+  md: {
+    fontSize: "15px",
+    padding: "11px 22px"
+  },
+  lg: {
+    fontSize: "16px",
+    padding: "14px 30px"
+  }
+};
+
+/**
+ * Button — the system's primary action. Square-ish editorial corners,
+ * 朱 accent for the primary fill.
+ */
+function Button({
+  variant = "primary",
+  size = "md",
+  fullWidth = false,
+  iconRight,
+  iconLeft,
+  children,
+  ...rest
+}) {
+  const s = SIZES[size] || SIZES.md;
+  const base = {
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "8px",
+    fontFamily: "var(--font-ui-jp)",
+    fontWeight: 600,
+    letterSpacing: "0.02em",
+    lineHeight: 1,
+    borderRadius: "var(--radius-sm)",
+    border: "1px solid transparent",
+    cursor: "pointer",
+    transition: "background var(--dur) var(--ease-out), color var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out)",
+    width: fullWidth ? "100%" : "auto",
+    ...s
+  };
+  const variants = {
+    primary: {
+      background: "var(--accent)",
+      color: "var(--accent-ink)"
+    },
+    secondary: {
+      background: "var(--ink-1)",
+      color: "var(--paper-1)"
+    },
+    outline: {
+      background: "transparent",
+      color: "var(--ink-1)",
+      borderColor: "var(--line-2)"
+    },
+    ghost: {
+      background: "transparent",
+      color: "var(--ink-1)"
+    }
+  };
+  return /*#__PURE__*/React.createElement("button", _extends({
+    type: "button",
+    style: {
+      ...base,
+      ...(variants[variant] || variants.primary)
+    }
+  }, rest), iconLeft, children, iconRight);
+}
+Object.assign(__ds_scope, { Button });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/Button.jsx", error: String((e && e.message) || e) }); }
+
+// components/core/Card.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/**
+ * Card — a plain paper surface with a hairline border and soft shadow.
+ * The base container for grouped content across the system.
+ */
+function Card({
+  as = "div",
+  padding = "var(--sp-6)",
+  accent,
+  interactive = false,
+  style,
+  children,
+  ...rest
+}) {
+  const Tag = as;
+  return /*#__PURE__*/React.createElement(Tag, _extends({
+    style: {
+      background: "var(--surface-card)",
+      border: "1px solid var(--line-1)",
+      borderTop: accent ? `3px solid ${accent}` : undefined,
+      borderRadius: "var(--radius-md)",
+      boxShadow: "var(--shadow-sm)",
+      padding,
+      transition: interactive ? "box-shadow var(--dur) var(--ease-out), transform var(--dur) var(--ease-out)" : undefined,
+      ...style
+    }
+  }, rest), children);
+}
+Object.assign(__ds_scope, { Card });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/Card.jsx", error: String((e && e.message) || e) }); }
+
+// components/core/CategoryButton.jsx
+try { (() => {
+/* Self-contained category map — no cross-file import needed. */
+const CAT = {
+  mincho: {
+    jp: "明朝体",
+    en: "Mincho",
+    color: "var(--cat-mincho)",
+    ink: "#fff",
+    font: "'Shippori Mincho', 'EB Garamond', serif"
+  },
+  gothic: {
+    jp: "ゴシック体",
+    en: "Gothic",
+    color: "var(--cat-gothic)",
+    ink: "#fff",
+    font: "'Noto Sans JP', 'Inter', sans-serif"
+  },
+  serif: {
+    jp: "serif",
+    en: "Serif",
+    color: "var(--cat-serif)",
+    ink: "#fff",
+    font: "'EB Garamond', 'Shippori Mincho', serif"
+  },
+  sans: {
+    jp: "sans-serif",
+    en: "Sans-serif",
+    color: "var(--cat-sans)",
+    ink: "#fff",
+    font: "'Inter', 'Noto Sans JP', sans-serif"
+  },
+  numerals: {
+    jp: "数字",
+    en: "Numerals",
+    color: "var(--cat-numerals)",
+    ink: "#fff",
+    font: "'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif"
+  }
+};
+
+/**
+ * CategoryButton — the まとめ site's signature category card-button.
+ * A solid color block (the category's 和色) carrying an uppercase Latin
+ * kicker, the large category name, an optional count, and an arrow.
+ * Used in the fixed sidebar as an in-page link to each category section.
+ */
+function CategoryButton({
+  category = "mincho",
+  count,
+  active = false,
+  onClick,
+  href
+}) {
+  const c = CAT[category] || CAT.mincho;
+  const Tag = href ? "a" : "button";
+
+  /* selected (active) state inverts the fill → white card with the category
+     color as text, no border, plus a strong drop shadow. */
+  const style = {
+    appearance: "none",
+    textDecoration: "none",
+    cursor: "pointer",
+    textAlign: "left",
+    width: "100%",
+    boxSizing: "border-box",
+    border: "none",
+    borderRadius: "var(--radius-lg)",
+    background: active ? "var(--paper-pure)" : c.color,
+    color: active ? c.color : c.ink || "#fff",
+    padding: "16px 16px 14px",
+    display: "flex",
+    flexDirection: "column",
+    gap: "12px",
+    minHeight: "112px",
+    boxShadow: active ? "0 14px 32px rgba(27, 25, 22, 0.16)" : "var(--shadow-sm)",
+    transform: active ? "translateY(-3px)" : "none",
+    transition: "transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out), background var(--dur) var(--ease-out), color var(--dur) var(--ease-out)"
+  };
+  return /*#__PURE__*/React.createElement(Tag, {
+    href: href,
+    onClick: onClick,
+    style: style
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: c.font || "var(--font-ui-display)",
+      fontWeight: 600,
+      fontSize: "26px",
+      lineHeight: 1.05
+    }
+  }, c.jp), /*#__PURE__*/React.createElement("span", {
+    style: {
+      marginTop: "auto",
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center"
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: "var(--font-label)",
+      fontSize: "12px",
+      fontWeight: 600,
+      opacity: 0.9
+    }
+  }, count != null ? count + " 書体" : ""), /*#__PURE__*/React.createElement("span", {
+    "aria-hidden": "true",
+    style: {
+      fontSize: "18px"
+    }
+  }, "\u2192")));
+}
+Object.assign(__ds_scope, { CategoryButton });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/CategoryButton.jsx", error: String((e && e.message) || e) }); }
+
+// components/specimen/CategoryBadge.jsx
+try { (() => {
+/**
+ * Category metadata shared across the specimen components.
+ * Keys: mincho (明朝体), gothic (ゴシック体), serif, sans.
+ */
+const CATEGORIES = {
+  mincho: {
+    label: "明朝体",
+    en: "Mincho",
+    color: "var(--cat-mincho)",
+    soft: "var(--cat-mincho-soft)"
+  },
+  gothic: {
+    label: "ゴシック体",
+    en: "Gothic",
+    color: "var(--cat-gothic)",
+    soft: "var(--cat-gothic-soft)"
+  },
+  serif: {
+    label: "serif",
+    en: "Serif",
+    color: "var(--cat-serif)",
+    soft: "var(--cat-serif-soft)"
+  },
+  sans: {
+    label: "sans-serif",
+    en: "Sans-serif",
+    color: "var(--cat-sans)",
+    soft: "var(--cat-sans-soft)"
+  },
+  numerals: {
+    label: "数字",
+    en: "Numerals",
+    color: "var(--cat-numerals)",
+    soft: "var(--cat-numerals-soft)"
+  }
+};
+const SIZES = {
+  sm: {
+    fontSize: "11px",
+    padding: "3px 9px",
+    gap: "5px"
+  },
+  md: {
+    fontSize: "12.5px",
+    padding: "5px 12px",
+    gap: "6px"
+  },
+  lg: {
+    fontSize: "14px",
+    padding: "7px 16px",
+    gap: "7px"
+  }
+};
+
+/**
+ * CategoryBadge — a pill that labels a font's category, colored with the
+ * matching 和色 accent. Used on specimens, filters and section headers.
+ */
+function CategoryBadge({
+  category = "mincho",
+  variant = "soft",
+  size = "md",
+  showEn = false,
+  children
+}) {
+  const cat = CATEGORIES[category] || CATEGORIES.mincho;
+  const s = SIZES[size] || SIZES.md;
+  const base = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: s.gap,
+    fontFamily: "var(--font-ui-jp)",
+    fontWeight: 600,
+    fontSize: s.fontSize,
+    lineHeight: 1,
+    letterSpacing: "0.02em",
+    padding: s.padding,
+    borderRadius: "var(--radius-pill)",
+    whiteSpace: "nowrap"
+  };
+  const variants = {
+    soft: {
+      background: cat.soft,
+      color: cat.color,
+      border: "1px solid transparent"
+    },
+    solid: {
+      background: cat.color,
+      color: "#fff",
+      border: "1px solid transparent"
+    },
+    outline: {
+      background: "transparent",
+      color: cat.color,
+      border: `1px solid ${cat.color}`
+    }
+  };
+  return /*#__PURE__*/React.createElement("span", {
+    style: {
+      ...base,
+      ...(variants[variant] || variants.soft)
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    "aria-hidden": "true",
+    style: {
+      width: "6px",
+      height: "6px",
+      borderRadius: "50%",
+      background: variant === "solid" ? "rgba(255,255,255,0.85)" : cat.color
+    }
+  }), children || cat.label, showEn && /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: "var(--font-label)",
+      fontWeight: 600,
+      opacity: 0.7,
+      fontSize: "0.82em",
+      letterSpacing: "0.04em"
+    }
+  }, cat.en));
+}
+Object.assign(__ds_scope, { CATEGORIES, CategoryBadge });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/specimen/CategoryBadge.jsx", error: String((e && e.message) || e) }); }
+
+// components/specimen/FontSpecimen.jsx
+try { (() => {
+const DEFAULT_SAMPLE = {
+  mincho: "春はあけぼの。",
+  gothic: "本日は晴天なり",
+  serif: "Typography",
+  sans: "Typography",
+  numerals: "$1,234.56"
+};
+
+/**
+ * FontSpecimen — the system's signature card. Presents one recommended
+ * typeface: name, category, an oversized live sample, the weights it ships,
+ * a one-line note, and a link to its Google Fonts page.
+ */
+function FontSpecimen({
+  name,
+  nameJp,
+  category = "mincho",
+  fontFamily,
+  sample,
+  sampleSize = "clamp(40px, 6vw, 72px)",
+  weights = [400, 700],
+  sampleWeight = 400,
+  note,
+  googleHref,
+  rank
+}) {
+  const cat = __ds_scope.CATEGORIES[category] || __ds_scope.CATEGORIES.mincho;
+  const text = sample || DEFAULT_SAMPLE[category];
+  const href = googleHref || `https://fonts.google.com/specimen/${(name || "").replace(/\s+/g, "+")}`;
+  return /*#__PURE__*/React.createElement("article", {
+    style: {
+      background: "var(--surface-card)",
+      border: "1px solid var(--line-1)",
+      borderTop: `3px solid ${cat.color}`,
+      borderRadius: "var(--radius-md)",
+      padding: "var(--sp-6)",
+      boxShadow: "var(--shadow-sm)",
+      display: "flex",
+      flexDirection: "column",
+      gap: "var(--sp-5)"
+    }
+  }, /*#__PURE__*/React.createElement("header", {
+    style: {
+      display: "flex",
+      alignItems: "flex-start",
+      justifyContent: "space-between",
+      gap: "var(--sp-4)"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "baseline",
+      gap: "var(--sp-3)",
+      minWidth: 0
+    }
+  }, rank != null && /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: "var(--font-label)",
+      fontWeight: 600,
+      fontSize: "13px",
+      color: cat.color,
+      letterSpacing: "0.04em"
+    }
+  }, String(rank).padStart(2, "0")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "2px",
+      minWidth: 0
+    }
+  }, /*#__PURE__*/React.createElement("h3", {
+    style: {
+      margin: 0,
+      fontFamily,
+      fontWeight: 600,
+      fontSize: "var(--fs-h4)",
+      lineHeight: 1.2,
+      color: "var(--ink-1)"
+    }
+  }, name), nameJp && /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: "var(--font-ui-jp)",
+      fontSize: "13px",
+      color: "var(--ink-3)"
+    }
+  }, nameJp))), /*#__PURE__*/React.createElement(__ds_scope.CategoryBadge, {
+    category: category,
+    size: "sm"
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily,
+      fontWeight: sampleWeight,
+      fontSize: sampleSize,
+      lineHeight: 1.15,
+      color: "var(--ink-1)",
+      letterSpacing: "-0.01em",
+      wordBreak: "break-word"
+    }
+  }, text), /*#__PURE__*/React.createElement("footer", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "var(--sp-4)",
+      borderTop: "1px solid var(--line-1)",
+      paddingTop: "var(--sp-4)"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "8px"
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: "var(--font-ui-jp)",
+      fontSize: "12px",
+      color: "var(--ink-3)"
+    }
+  }, "\u30A6\u30A7\u30A4\u30C8\uFF08\u6587\u5B57\u306E\u592A\u3055\u30FB\u6570\u5B57\u304C\u5927\u304D\u3044\u307B\u3069\u592A\u3044\uFF09"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexWrap: "wrap",
+      gap: "var(--sp-2)"
+    }
+  }, weights.map(w => /*#__PURE__*/React.createElement("span", {
+    key: w,
+    style: {
+      fontFamily: "var(--font-label)",
+      fontSize: "11px",
+      fontWeight: 600,
+      color: "var(--ink-2)",
+      background: "var(--paper-2)",
+      border: "1px solid var(--line-1)",
+      borderRadius: "var(--radius-pill)",
+      padding: "3px 10px"
+    }
+  }, w)))), note && /*#__PURE__*/React.createElement("p", {
+    style: {
+      margin: 0,
+      fontFamily: "var(--font-ui-jp)",
+      fontSize: "var(--fs-body-sm)",
+      lineHeight: "var(--lh-body)",
+      color: "var(--ink-2)",
+      textWrap: "pretty"
+    }
+  }, note), /*#__PURE__*/React.createElement("a", {
+    href: href,
+    target: "_blank",
+    rel: "noopener noreferrer",
+    style: {
+      alignSelf: "flex-start",
+      fontFamily: "var(--font-label)",
+      fontSize: "13px",
+      fontWeight: 600,
+      color: cat.color,
+      textDecoration: "none",
+      display: "inline-flex",
+      alignItems: "center",
+      gap: "6px"
+    }
+  }, "Google Fonts \u3067\u898B\u308B", /*#__PURE__*/React.createElement("span", {
+    "aria-hidden": "true"
+  }, "\u2197"))));
+}
+Object.assign(__ds_scope, { FontSpecimen });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/specimen/FontSpecimen.jsx", error: String((e && e.message) || e) }); }
+
+// components/specimen/GlyphSet.jsx
+try { (() => {
+/**
+ * GlyphSet — a row/grid of large reference glyphs. 永 (the classic
+ * eight-stroke test character) and a mix of kana + Latin reveal a face's
+ * construction quickly.
+ */
+function GlyphSet({
+  fontFamily,
+  glyphs = ["永", "愛", "あ", "ア", "Q", "g"],
+  weight = 400,
+  size = "52px",
+  color = "var(--ink-1)",
+  accent = "var(--accent)"
+}) {
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexWrap: "wrap",
+      gap: "var(--sp-2)"
+    }
+  }, glyphs.map((g, i) => /*#__PURE__*/React.createElement("div", {
+    key: i,
+    style: {
+      flex: "1 1 0",
+      minWidth: "56px",
+      aspectRatio: "1 / 1",
+      display: "grid",
+      placeItems: "center",
+      background: "var(--paper-2)",
+      border: "1px solid var(--line-1)",
+      borderRadius: "var(--radius-sm)",
+      fontFamily,
+      fontWeight: weight,
+      fontSize: size,
+      lineHeight: 1,
+      color: i === 0 ? accent : color
+    }
+  }, g)));
+}
+Object.assign(__ds_scope, { GlyphSet });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/specimen/GlyphSet.jsx", error: String((e && e.message) || e) }); }
+
+// components/specimen/WeightScale.jsx
+try { (() => {
+const WEIGHT_LABELS = {
+  300: "Light",
+  400: "Regular",
+  500: "Medium",
+  600: "SemiBold",
+  700: "Bold",
+  800: "ExtraBold",
+  900: "Black"
+};
+
+/**
+ * WeightScale — stacks the same sample text at several weights so you can
+ * read a face's full tonal range at a glance.
+ */
+function WeightScale({
+  fontFamily,
+  weights = [400, 700],
+  sample = "あア永 Aa",
+  size = "28px",
+  showLabels = true,
+  color = "var(--ink-1)"
+}) {
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "var(--sp-3)"
+    }
+  }, weights.map(w => /*#__PURE__*/React.createElement("div", {
+    key: w,
+    style: {
+      display: "flex",
+      alignItems: "baseline",
+      gap: "var(--sp-4)"
+    }
+  }, showLabels && /*#__PURE__*/React.createElement("span", {
+    style: {
+      flex: "0 0 84px",
+      fontFamily: "var(--font-label)",
+      fontSize: "11px",
+      fontWeight: 600,
+      letterSpacing: "0.04em",
+      color: "var(--ink-3)",
+      textTransform: "uppercase"
+    }
+  }, w, " ", WEIGHT_LABELS[w] || ""), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily,
+      fontWeight: w,
+      fontSize: size,
+      lineHeight: 1.25,
+      color
+    }
+  }, sample))));
+}
+Object.assign(__ds_scope, { WeightScale });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/specimen/WeightScale.jsx", error: String((e && e.message) || e) }); }
+
+// ui_kits/font-matome/data.js
+try { (() => {
+/* Font dataset for the まとめ UI kit. Plain global script (not Babel). */
+window.CATEGORY_META = {
+  mincho: {
+    key: "mincho",
+    jp: "明朝体",
+    en: "Mincho",
+    kicker: "Japanese serif",
+    color: "var(--cat-mincho)",
+    soft: "var(--cat-mincho-soft)",
+    ink: "#fff",
+    wa: "明朝体",
+    desc: "縦画と横画の太さに差があり、画の端に「うろこ」を持つ和文書体。上品で可読性が高く、長文・縦組み・タイトルに向く。"
+  },
+  gothic: {
+    key: "gothic",
+    jp: "ゴシック体",
+    en: "Gothic",
+    kicker: "Japanese sans-serif",
+    color: "var(--cat-gothic)",
+    soft: "var(--cat-gothic-soft)",
+    ink: "#fff",
+    wa: "ゴシック体",
+    desc: "線の太さが均一でうろこを持たない和文書体。視認性が高く、UI・サイネージ・見出しなど幅広い用途に強い。"
+  },
+  serif: {
+    key: "serif",
+    jp: "serif",
+    en: "Serif",
+    kicker: "Latin serif",
+    color: "var(--cat-serif)",
+    soft: "var(--cat-serif-soft)",
+    ink: "#fff",
+    wa: "serif",
+    desc: "文字の端にセリフ（ひげ飾り）を持つ欧文書体。明朝に近い古典的で知的な雰囲気をつくる。"
+  },
+  sans: {
+    key: "sans",
+    jp: "sans-serif",
+    en: "Sans-serif",
+    kicker: "Latin sans-serif",
+    color: "var(--cat-sans)",
+    soft: "var(--cat-sans-soft)",
+    ink: "#fff",
+    wa: "sans-serif",
+    desc: "セリフを持たないすっきりした欧文書体。モダンで明快、UI やブランディングの定番。"
+  },
+  numerals: {
+    key: "numerals",
+    jp: "数字",
+    en: "Numerals",
+    kicker: "Lining figures",
+    color: "var(--cat-numerals)",
+    soft: "var(--cat-numerals-soft)",
+    ink: "#fff",
+    wa: "数字",
+    desc: "ベースラインと高さの揃ったライニング数字を備え、表・チャート・データ表示で桁が美しく揃う書体。"
+  }
+};
+window.FONT_DATA = [/* === 明朝体 === */
+{
+  name: "Zen Old Mincho",
+  nameJp: "Zen オールド明朝",
+  category: "mincho",
+  fontFamily: "var(--font-zen-old-mincho)",
+  weights: [400, 500, 600, 700, 900],
+  note: "クラシックで格調高い明朝。伝統的な骨格が見出しに映える。"
+}, {
+  name: "Shippori Mincho",
+  nameJp: "しっぽり明朝",
+  category: "mincho",
+  fontFamily: "var(--font-shippori)",
+  weights: [400, 500, 600, 700, 800],
+  note: "筆の入りを残した上品な明朝。本文・見出しともに美しく組める定番。"
+}, {
+  name: "Noto Serif JP",
+  nameJp: "Noto Serif JP",
+  category: "mincho",
+  fontFamily: "var(--font-noto-serif-jp)",
+  weights: [300, 400, 500, 700, 900],
+  note: "9ウェイトを揃える万能明朝。長文でも安定して組める安心感。"
+}, {
+  name: "Kaisei Decol",
+  nameJp: "解星デコール",
+  category: "mincho",
+  fontFamily: "var(--font-kaisei-decol)",
+  weights: [400, 500, 700],
+  note: "丸みのある柔らかな明朝。親しみやすい見出しに向く。"
+}, {
+  name: "Hina Mincho",
+  nameJp: "ひな明朝",
+  category: "mincho",
+  fontFamily: "var(--font-hina-mincho)",
+  weights: [400],
+  note: "細く繊細な一画。余白を生かした上品なタイトルに。"
+}, /* === ゴシック体 === */
+{
+  name: "Zen Kaku Gothic New",
+  nameJp: "Zen 角ゴシック New",
+  category: "gothic",
+  fontFamily: "var(--font-zen-kaku)",
+  weights: [300, 400, 500, 700, 900],
+  note: "角ゴシックの新定番。視認性が高く UI に最適。",
+  sampleWeight: 500
+}, {
+  name: "Noto Sans JP",
+  nameJp: "Noto Sans JP",
+  category: "gothic",
+  fontFamily: "var(--font-noto-sans-jp)",
+  weights: [300, 400, 500, 700, 900],
+  note: "圧倒的な汎用性。あらゆる場面で破綻しない安心の書体。",
+  sampleWeight: 500
+}, {
+  name: "M PLUS 1p",
+  nameJp: "M PLUS 1p",
+  category: "gothic",
+  fontFamily: "var(--font-mplus1p)",
+  weights: [400, 500, 700, 800],
+  note: "端正でモダンな角ゴ。数字・英字も整っている。",
+  sampleWeight: 500
+}, {
+  name: "Zen Maru Gothic",
+  nameJp: "Zen 丸ゴシック",
+  category: "gothic",
+  fontFamily: "var(--font-zen-maru)",
+  weights: [400, 500, 700, 900],
+  note: "角を丸めた優しい印象。ポップな用途や子ども向けに。",
+  sampleWeight: 500
+}, {
+  name: "Kosugi Maru",
+  nameJp: "小杉丸",
+  category: "gothic",
+  fontFamily: "var(--font-kosugi-maru)",
+  weights: [400],
+  note: "軽快な丸ゴシック。カジュアルな見出しやバナーに。"
+}, /* === serif (Latin) === */
+{
+  name: "Crimson Text",
+  category: "serif",
+  fontFamily: "var(--font-crimson-text)",
+  weights: [400, 600, 700],
+  note: "読書のために設計された古典的本文セリフ。長文を上品に組める。",
+  sampleWeight: 400
+}, {
+  name: "Marcellus",
+  category: "serif",
+  fontFamily: "var(--font-marcellus)",
+  weights: [400],
+  note: "ローマン碑文に着想を得た優雅な見出しセリフ。気品ある佇まい。",
+  sampleWeight: 400
+}, {
+  name: "Cinzel",
+  category: "serif",
+  fontFamily: "var(--font-cinzel)",
+  weights: [400, 500, 600, 700, 800, 900],
+  note: "クラシックな大文字のディスプレイセリフ。高級感のあるロゴに。",
+  sampleWeight: 400
+}, {
+  name: "EB Garamond",
+  category: "serif",
+  fontFamily: "var(--font-eb-garamond)",
+  weights: [400, 500, 600, 700, 800],
+  note: "古典的なギャラモン系。知的で落ち着いた佇まい。",
+  sampleWeight: 400
+}, {
+  name: "Libre Baskerville",
+  category: "serif",
+  fontFamily: "var(--font-libre-baskerville)",
+  weights: [400, 700],
+  note: "バスカヴィル系の正統派。引用や本文に品よく。",
+  sampleWeight: 400
+}, {
+  name: "Domine",
+  category: "serif",
+  fontFamily: "var(--font-domine)",
+  weights: [400, 500, 600, 700],
+  note: "本文向けに最適化された頑健なセリフ。画面でも読みやすい。",
+  sampleWeight: 400
+}, {
+  name: "Linden Hill",
+  category: "serif",
+  fontFamily: "var(--font-linden-hill)",
+  weights: [400],
+  note: "金属活字を思わせる繊細で優美なセリフ。エディトリアルに。",
+  sampleWeight: 400
+}, {
+  name: "Prata",
+  category: "serif",
+  fontFamily: "var(--font-prata)",
+  weights: [400],
+  note: "ハイコントラストでモダンなディディオ系。華やかな見出しに。",
+  sampleWeight: 400
+}, /* === sans-serif (Latin) === */
+{
+  name: "Hanken Grotesk",
+  category: "sans",
+  fontFamily: "var(--font-hanken-grotesk)",
+  weights: [300, 400, 500, 600, 700, 800],
+  note: "ニュートラルで親しみやすいジオメトリック・グロテスク。UI・ブランドに万能。",
+  sampleWeight: 400
+}, {
+  name: "Inter",
+  category: "sans",
+  fontFamily: "var(--font-inter)",
+  weights: [400, 500, 600, 700],
+  note: "UI のために設計された定番サンセリフ。数字や記号も明快。",
+  sampleWeight: 400
+}, {
+  name: "Montserrat",
+  category: "sans",
+  fontFamily: "var(--font-montserrat)",
+  weights: [400, 500, 600, 700, 800],
+  note: "都会的で力強い。ロゴや大見出しによく合う。",
+  sampleWeight: 500
+}, {
+  name: "Barlow Condensed",
+  category: "sans",
+  fontFamily: "var(--font-barlow-condensed)",
+  weights: [300, 400, 500, 600, 700],
+  note: "引き締まったコンデンス体。スポーティで力強い見出しに。",
+  sampleWeight: 500
+}, {
+  name: "Questrial",
+  category: "sans",
+  fontFamily: "var(--font-questrial)",
+  weights: [400],
+  note: "細く端正なジオメトリック。ミニマルで上品な印象。",
+  sampleWeight: 400
+}, {
+  name: "Lato",
+  category: "sans",
+  fontFamily: "var(--font-lato)",
+  weights: [100, 300, 400, 700, 900],
+  note: "温かみのある定番ヒューマニスト。本文から見出しまで万能。",
+  sampleWeight: 400
+}, {
+  name: "Aldrich",
+  category: "sans",
+  fontFamily: "var(--font-aldrich)",
+  weights: [400],
+  note: "等幅感のあるテック調サンセリフ。未来的な見出しに。",
+  sampleWeight: 400
+}, {
+  name: "Cousine",
+  category: "sans",
+  fontFamily: "var(--font-cousine)",
+  weights: [400, 700],
+  note: "等幅のスラブ寄り書体。コードやデータ表示に最適。",
+  sampleWeight: 400
+}, {
+  name: "Josefin Sans",
+  category: "sans",
+  fontFamily: "var(--font-josefin-sans)",
+  weights: [300, 400, 500, 600, 700],
+  note: "細身でエレガントなジオメトリック。ヴィンテージ感のある見出しに。",
+  sampleWeight: 400
+}, {
+  name: "Roboto",
+  category: "sans",
+  fontFamily: "var(--font-roboto)",
+  weights: [300, 400, 500, 700, 900],
+  note: "Android の標準書体。中庸で読みやすく、あらゆる用途に万能。",
+  sampleWeight: 400
+}, {
+  name: "Oswald",
+  category: "sans",
+  fontFamily: "var(--font-oswald)",
+  weights: [300, 400, 500, 600, 700],
+  note: "引き締まったコンデンス体。力強い大見出しやポスターに。",
+  sampleWeight: 500
+}, /* === 数字 (numerals) === */
+{
+  name: "Droid Serif",
+  category: "numerals",
+  fontFamily: "var(--font-droid-serif)",
+  sample: "$1,234.56",
+  weights: [400, 700],
+  note: "数字のプロポーションが吟味されたセリフ。画面でとても見やすい。",
+  sampleWeight: 400
+}, {
+  name: "Crimson Text",
+  category: "numerals",
+  fontFamily: "var(--font-crimson-text)",
+  sample: "$1,234.56",
+  weights: [400, 600, 700],
+  note: "ライニング・等幅ライニングに対応。海外でも幅広く使われる定番。",
+  sampleWeight: 400
+}, {
+  name: "Old Standard TT",
+  category: "numerals",
+  fontFamily: "var(--font-old-standard-tt)",
+  sample: "$1,234.56",
+  weights: [400, 700],
+  note: "クラシックでエレガント。アンティークな雰囲気の数字デザイン。",
+  sampleWeight: 400
+}, {
+  name: "Kameron",
+  category: "numerals",
+  fontFamily: "var(--font-kameron)",
+  sample: "$1,234.56",
+  weights: [400, 500, 600, 700],
+  note: "幅広なスラブセリフ。落ち着いた数字が表組みに映える。",
+  sampleWeight: 400
+}, {
+  name: "Copse",
+  category: "numerals",
+  fontFamily: "var(--font-copse)",
+  sample: "$1,234.56",
+  weights: [400],
+  note: "小さいサイズでも読みやすいスラブセリフ。可読性重視に。",
+  sampleWeight: 400
+}, {
+  name: "Open Sans",
+  category: "numerals",
+  fontFamily: "var(--font-open-sans)",
+  sample: "$1,234.56",
+  weights: [300, 400, 500, 600, 700],
+  note: "あらゆる場面で使える定番サンセリフ。数字も安定して明快。",
+  sampleWeight: 400
+}, {
+  name: "Lato",
+  category: "numerals",
+  fontFamily: "var(--font-lato)",
+  sample: "$1,234.56",
+  weights: [100, 300, 400, 700, 900],
+  note: "コントロールを抑えた柔らかな数字。Open Sans とは違う表情。",
+  sampleWeight: 400
+}, {
+  name: "Roboto Condensed",
+  category: "numerals",
+  fontFamily: "var(--font-roboto-condensed)",
+  sample: "$1,234.56",
+  weights: [300, 400, 500, 700],
+  note: "等幅ライニング数字に対応したコンデンス体。桁が揃う。",
+  sampleWeight: 400
+}, {
+  name: "Titillium Web",
+  category: "numerals",
+  fontFamily: "var(--font-titillium-web)",
+  sample: "$1,234.56",
+  weights: [300, 400, 600, 700, 900],
+  note: "角張った厳格な印象。豊富なウエイトでデータ表示に強い。",
+  sampleWeight: 400
+}, {
+  name: "Varela Round",
+  category: "numerals",
+  fontFamily: "var(--font-varela-round)",
+  sample: "$1,234.56",
+  weights: [400],
+  note: "丸みのある親しみやすい数字。フレンドリーな表現に。",
+  sampleWeight: 400
+}];
+})(); } catch (e) { __ds_ns.__errors.push({ path: "ui_kits/font-matome/data.js", error: String((e && e.message) || e) }); }
+
+// ui_kits/font-matome/screens.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/* まとめ — Google Fonts おすすめまとめ. Mounted by index.html.
+   Layout: fixed yellow left sidebar (category card-buttons = in-page links)
+   + MV door (yellow, no buttons) + stacked per-category colored sections. */
+const {
+  useState,
+  useMemo,
+  useEffect,
+  useRef
+} = React;
+const {
+  FontSpecimen,
+  CategoryButton
+} = window.DesignSystem_74b1d1;
+const FONTS = window.FONT_DATA;
+const CATS = window.CATEGORY_META;
+const ORDER = ["mincho", "gothic", "serif", "sans", "numerals"];
+const SIDEBAR_W = 256;
+function scrollToId(id) {
+  if (id === "home") {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+    return;
+  }
+  const el = document.getElementById(id);
+  if (el) window.scrollTo({
+    top: el.getBoundingClientRect().top + window.scrollY,
+    behavior: "smooth"
+  });
+}
+
+/* ---------- Sidebar (fixed, main yellow) — category card-buttons ---------- */
+function Sidebar({
+  active
+}) {
+  return /*#__PURE__*/React.createElement("aside", {
+    style: {
+      position: "fixed",
+      top: 0,
+      left: 0,
+      bottom: 0,
+      width: SIDEBAR_W,
+      zIndex: 30,
+      background: "var(--accent)",
+      color: "var(--accent-ink)",
+      overflowY: "auto",
+      display: "flex",
+      flexDirection: "column",
+      padding: "26px 18px",
+      boxShadow: "var(--shadow-md)"
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: () => scrollToId("home"),
+    style: {
+      cursor: "pointer",
+      background: "none",
+      border: "none",
+      padding: 0,
+      textAlign: "left",
+      marginBottom: 24
+    }
+  }, /*#__PURE__*/React.createElement("p", {
+    style: {
+      margin: 0,
+      fontFamily: "var(--font-ui-display)",
+      fontWeight: 600,
+      fontSize: 24,
+      color: "var(--accent-ink)",
+      lineHeight: 1.1
+    }
+  }, "\u30D5\u30A9\u30F3\u30C8", /*#__PURE__*/React.createElement("br", null), "\u307E\u3068\u3081"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      margin: "8px 0 0",
+      fontFamily: "var(--font-label)",
+      fontSize: 10,
+      fontWeight: 600,
+      letterSpacing: "0.18em",
+      textTransform: "uppercase",
+      color: "var(--accent-ink)",
+      opacity: 0.7
+    }
+  }, "Google Fonts")), /*#__PURE__*/React.createElement("p", {
+    style: {
+      margin: "0 0 10px 4px",
+      fontFamily: "var(--font-label)",
+      fontSize: 10,
+      fontWeight: 600,
+      letterSpacing: "0.16em",
+      textTransform: "uppercase",
+      color: "var(--accent-ink)",
+      opacity: 0.6
+    }
+  }, "\u30AB\u30C6\u30B4\u30EA\u30FC"), /*#__PURE__*/React.createElement("nav", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 12
+    }
+  }, ORDER.map(k => /*#__PURE__*/React.createElement(CategoryButton, {
+    key: k,
+    category: k,
+    count: FONTS.filter(f => f.category === k).length,
+    active: active === k,
+    onClick: () => scrollToId("cat-" + k)
+  }))), /*#__PURE__*/React.createElement("a", {
+    href: "https://fonts.google.com",
+    target: "_blank",
+    rel: "noopener noreferrer",
+    style: {
+      marginTop: "auto",
+      paddingTop: 18,
+      fontFamily: "var(--font-label)",
+      fontSize: 12,
+      fontWeight: 600,
+      color: "var(--accent-ink)",
+      textDecoration: "none",
+      opacity: 0.8
+    }
+  }, "fonts.google.com \u2197"));
+}
+
+/* ---------- MV / 扉 (main yellow, no buttons) ---------- */
+function MV({
+  mobile
+}) {
+  return /*#__PURE__*/React.createElement("section", {
+    id: "home",
+    style: {
+      background: "var(--accent)",
+      color: "var(--accent-ink)",
+      minHeight: "100vh",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      padding: "var(--sp-9)"
+    }
+  }, /*#__PURE__*/React.createElement("p", {
+    style: {
+      margin: 0,
+      fontFamily: "var(--font-label)",
+      fontSize: 13,
+      fontWeight: 600,
+      letterSpacing: "0.18em",
+      textTransform: "uppercase",
+      opacity: 0.7
+    }
+  }, "Recommended Google Fonts"), /*#__PURE__*/React.createElement("h1", {
+    style: {
+      margin: "20px 0 0",
+      fontFamily: "var(--font-ui-display)",
+      fontWeight: 600,
+      fontSize: "clamp(44px, 6vw, 96px)",
+      lineHeight: 1.3,
+      letterSpacing: "-0.01em",
+      textWrap: "balance",
+      maxWidth: "16ch"
+    }
+  }, "\u8FF7\u3063\u305F\u3089\u3053\u308C\u3002", /*#__PURE__*/React.createElement("br", null), "\u5B9A\u756A", /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: "#3153F6"
+    }
+  }, "Google Fonts")), /*#__PURE__*/React.createElement("p", {
+    style: {
+      margin: "26px 0 0",
+      maxWidth: "54ch",
+      fontFamily: "var(--font-ui-jp)",
+      fontSize: "var(--fs-lead)",
+      lineHeight: "var(--lh-body)",
+      color: "var(--accent-ink)",
+      opacity: 0.92,
+      textWrap: "pretty"
+    }
+  }, "Google Fonts \u304B\u3089\u53B3\u9078\u3057\u305F\u304A\u3059\u3059\u3081\u66F8\u4F53\u3092\u3001", /*#__PURE__*/React.createElement("br", null), "\u660E\u671D\u4F53\u30FB\u30B4\u30B7\u30C3\u30AF\u4F53\u30FBserif\u30FBsans-serif\u30FB\u6570\u5B57\u306E5\u5206\u985E\u3067\u6574\u7406\u3057\u307E\u3057\u305F\u3002"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      margin: "34px 0 0",
+      display: "inline-flex",
+      alignItems: "center",
+      gap: 12,
+      fontFamily: "var(--font-ui-jp)",
+      fontSize: "var(--fs-body)",
+      fontWeight: 600,
+      color: "var(--accent-ink)"
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    "aria-hidden": "true",
+    style: {
+      fontSize: 22
+    }
+  }, mobile ? "↓" : "←"), mobile ? "下のメニューから選んでください。" : "左のカテゴリーから選んでください。"));
+}
+
+/* ---------- Category section (own background color) ---------- */
+function CategorySection({
+  catKey,
+  mobile
+}) {
+  const c = CATS[catKey];
+  const HEADING_FONT = {
+    mincho: "'Shippori Mincho', 'EB Garamond', serif",
+    gothic: "'Noto Sans JP', 'Inter', sans-serif",
+    serif: "'EB Garamond', 'Shippori Mincho', serif",
+    sans: "'Inter', 'Noto Sans JP', sans-serif",
+    numerals: "'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif"
+  };
+  const headFont = HEADING_FONT[catKey] || "var(--font-ui-display)";
+  const ink = c.ink || "#fff";
+  const inkMuted = ink === "#fff" ? "rgba(255,255,255,0.92)" : "rgba(0,0,0,0.66)";
+  const [query, setQuery] = useState("");
+  const fonts = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return FONTS.filter(f => f.category === catKey && (!q || f.name.toLowerCase().includes(q) || (f.nameJp || "").toLowerCase().includes(q)));
+  }, [catKey, query]);
+  return /*#__PURE__*/React.createElement("section", {
+    id: "cat-" + catKey,
+    style: {
+      background: c.color,
+      color: ink,
+      scrollMarginTop: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: mobile ? "var(--sp-6) var(--sp-5) var(--sp-5)" : "var(--sp-8) var(--sp-9) var(--sp-7)"
+    }
+  }, /*#__PURE__*/React.createElement("h2", {
+    style: {
+      margin: 0,
+      fontFamily: headFont,
+      fontWeight: 600,
+      fontSize: "clamp(40px, 6vw, 84px)",
+      lineHeight: 1.04,
+      letterSpacing: "-0.01em"
+    }
+  }, c.jp), /*#__PURE__*/React.createElement("p", {
+    style: {
+      margin: "20px 0 0",
+      maxWidth: "60ch",
+      fontFamily: "var(--font-ui-jp)",
+      fontSize: "var(--fs-lead)",
+      lineHeight: "var(--lh-body)",
+      color: inkMuted,
+      textWrap: "pretty"
+    }
+  }, c.desc), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 18,
+      marginTop: 28,
+      flexWrap: "wrap"
+    }
+  }, /*#__PURE__*/React.createElement("input", {
+    value: query,
+    onChange: e => setQuery(e.target.value),
+    placeholder: "\u3053\u306E\u30AB\u30C6\u30B4\u30EA\u30FC\u5185\u3092\u691C\u7D22\u2026",
+    style: {
+      fontFamily: "var(--font-ui-jp)",
+      fontSize: 14,
+      color: "var(--ink-1)",
+      padding: "9px 15px",
+      minWidth: 220,
+      background: "#fff",
+      border: "none",
+      borderRadius: "var(--radius-sm)",
+      outline: "none"
+    }
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: "var(--font-label)",
+      fontSize: 13,
+      fontWeight: 600,
+      opacity: 0.9
+    }
+  }, fonts.length, " \u66F8\u4F53"))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: mobile ? "0 var(--sp-5) var(--sp-6)" : "0 var(--sp-9) var(--sp-8)"
+    }
+  }, fonts.length ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "grid",
+      gridTemplateColumns: mobile ? "1fr" : "repeat(auto-fill, minmax(340px, 1fr))",
+      gap: "var(--sp-5)"
+    }
+  }, fonts.map((f, i) => /*#__PURE__*/React.createElement(FontSpecimen, _extends({
+    key: f.name
+  }, f, {
+    rank: i + 1
+  })))) : /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "rgba(255,255,255,0.14)",
+      borderRadius: "var(--radius-md)",
+      padding: "var(--sp-7)",
+      textAlign: "center"
+    }
+  }, /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontFamily: "var(--font-ui-display)",
+      fontSize: 24,
+      margin: 0
+    }
+  }, "\u8A72\u5F53\u3059\u308B\u66F8\u4F53\u304C\u898B\u3064\u304B\u308A\u307E\u305B\u3093"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontFamily: "var(--font-ui-jp)",
+      margin: "8px 0 0",
+      opacity: 0.85
+    }
+  }, "\u300C", query, "\u300D\u306E\u691C\u7D22\u7D50\u679C\u306F0\u4EF6\u3067\u3059\u3002"))));
+}
+
+/* ---------- responsive helper + mobile top menu ---------- */
+function useIsMobile(bp = 900) {
+  const [m, setM] = useState(typeof window !== "undefined" && window.innerWidth <= bp);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: " + bp + "px)");
+    const on = () => setM(mq.matches);
+    on();
+    mq.addEventListener("change", on);
+    return () => mq.removeEventListener("change", on);
+  }, [bp]);
+  return m;
+}
+
+/* horizontal category menu — flows after the MV, sticks to top once passed */
+function MobileMenu({
+  active
+}) {
+  return /*#__PURE__*/React.createElement("nav", {
+    style: {
+      position: "sticky",
+      top: 0,
+      zIndex: 40,
+      background: "var(--accent)",
+      boxShadow: "var(--shadow-md)",
+      padding: "10px 12px",
+      display: "flex",
+      gap: 8,
+      overflowX: "auto",
+      WebkitOverflowScrolling: "touch"
+    }
+  }, ORDER.map(k => {
+    const c = CATS[k];
+    const on = active === k;
+    return /*#__PURE__*/React.createElement("button", {
+      key: k,
+      onClick: () => scrollToId("cat-" + k),
+      style: {
+        flex: "0 0 auto",
+        cursor: "pointer",
+        border: "none",
+        borderRadius: "var(--radius-pill)",
+        padding: "9px 16px",
+        fontFamily: "var(--font-ui-jp)",
+        fontSize: 14,
+        fontWeight: 600,
+        whiteSpace: "nowrap",
+        background: on ? "var(--paper-pure)" : c.color,
+        color: on ? c.color : c.ink || "#fff",
+        boxShadow: on ? "0 4px 14px rgba(27,25,22,0.18)" : "none",
+        transition: "background var(--dur) var(--ease-out), color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out)"
+      }
+    }, c.jp);
+  }));
+}
+
+/* ---------- App ---------- */
+function App() {
+  const [active, setActive] = useState("home");
+  const isMobile = useIsMobile();
+
+  /* scroll-spy: highlight the section currently in view */
+  useEffect(() => {
+    const ids = ["home", ...ORDER.map(k => "cat-" + k)];
+    const onScroll = () => {
+      const mid = window.scrollY + window.innerHeight * 0.35;
+      let cur = "home";
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= mid) cur = id;
+      }
+      setActive(cur === "home" ? "home" : cur.replace("cat-", ""));
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, {
+      passive: true
+    });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  const backToTop = /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "var(--accent)",
+      display: "flex",
+      justifyContent: "center",
+      padding: "var(--sp-8) var(--sp-9)"
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: () => scrollToId("home"),
+    style: {
+      cursor: "pointer",
+      background: "var(--accent-ink)",
+      border: "none",
+      color: "var(--accent)",
+      borderRadius: "var(--radius-md)",
+      fontFamily: "var(--font-ui-jp)",
+      fontSize: 15,
+      fontWeight: 600,
+      padding: "14px 28px",
+      display: "inline-flex",
+      alignItems: "center",
+      gap: 10
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    "aria-hidden": "true",
+    style: {
+      fontSize: 18
+    }
+  }, "\u2191"), "\u30DA\u30FC\u30B8\u30C8\u30C3\u30D7\u3078\u623B\u308B"));
+
+  /* ---- mobile: stacked MV → sticky menu → sections ---- */
+  if (isMobile) {
+    return /*#__PURE__*/React.createElement("div", {
+      style: {
+        minHeight: "100vh",
+        background: "var(--accent)"
+      }
+    }, /*#__PURE__*/React.createElement(MV, {
+      mobile: true
+    }), /*#__PURE__*/React.createElement(MobileMenu, {
+      active: active
+    }), ORDER.map(k => /*#__PURE__*/React.createElement(CategorySection, {
+      key: k,
+      catKey: k,
+      mobile: true
+    })), backToTop);
+  }
+
+  /* ---- desktop: fixed left sidebar ---- */
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      minHeight: "100vh",
+      background: "var(--accent)"
+    }
+  }, /*#__PURE__*/React.createElement(Sidebar, {
+    active: active
+  }), /*#__PURE__*/React.createElement("main", {
+    style: {
+      marginLeft: SIDEBAR_W,
+      minHeight: "100vh"
+    }
+  }, /*#__PURE__*/React.createElement(MV, null), ORDER.map(k => /*#__PURE__*/React.createElement(CategorySection, {
+    key: k,
+    catKey: k
+  })), backToTop));
+}
+ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.createElement(App, null));
+})(); } catch (e) { __ds_ns.__errors.push({ path: "ui_kits/font-matome/screens.jsx", error: String((e && e.message) || e) }); }
+
+__ds_ns.Button = __ds_scope.Button;
+
+__ds_ns.Card = __ds_scope.Card;
+
+__ds_ns.CategoryButton = __ds_scope.CategoryButton;
+
+__ds_ns.CATEGORIES = __ds_scope.CATEGORIES;
+
+__ds_ns.CategoryBadge = __ds_scope.CategoryBadge;
+
+__ds_ns.FontSpecimen = __ds_scope.FontSpecimen;
+
+__ds_ns.GlyphSet = __ds_scope.GlyphSet;
+
+__ds_ns.WeightScale = __ds_scope.WeightScale;
+
+})();
+
+</script>
+<script>
+/* Font dataset for the まとめ UI kit. Plain global script (not Babel). */
+window.CATEGORY_META = {
+  mincho: { key: "mincho", jp: "明朝体", en: "Mincho", kicker: "Japanese serif", color: "var(--cat-mincho)", soft: "var(--cat-mincho-soft)", ink: "#fff", wa: "明朝体",
+    desc: "縦画と横画の太さに差があり、画の端に「うろこ」を持つ和文書体。上品で可読性が高く、長文・縦組み・タイトルに向く。" },
+  gothic: { key: "gothic", jp: "ゴシック体", en: "Gothic", kicker: "Japanese sans-serif", color: "var(--cat-gothic)", soft: "var(--cat-gothic-soft)", ink: "#fff", wa: "ゴシック体",
+    desc: "線の太さが均一でうろこを持たない和文書体。視認性が高く、UI・サイネージ・見出しなど幅広い用途に強い。" },
+  serif: { key: "serif", jp: "serif", en: "Serif", kicker: "Latin serif", color: "var(--cat-serif)", soft: "var(--cat-serif-soft)", ink: "#fff", wa: "serif",
+    desc: "文字の端にセリフ（ひげ飾り）を持つ欧文書体。明朝に近い古典的で知的な雰囲気をつくる。" },
+  sans: { key: "sans", jp: "sans-serif", en: "Sans-serif", kicker: "Latin sans-serif", color: "var(--cat-sans)", soft: "var(--cat-sans-soft)", ink: "#fff", wa: "sans-serif",
+    desc: "セリフを持たないすっきりした欧文書体。モダンで明快、UI やブランディングの定番。" },
+  numerals: { key: "numerals", jp: "数字", en: "Numerals", kicker: "Lining figures", color: "var(--cat-numerals)", soft: "var(--cat-numerals-soft)", ink: "#fff", wa: "数字",
+    desc: "ベースラインと高さの揃ったライニング数字を備え、表・チャート・データ表示で桁が美しく揃う書体。" },
+};
+
+window.FONT_DATA = [
+  /* === 明朝体 === */
+  { name: "Zen Old Mincho", nameJp: "Zen オールド明朝", category: "mincho", fontFamily: "var(--font-zen-old-mincho)", weights: [400,500,600,700,900], note: "クラシックで格調高い明朝。伝統的な骨格が見出しに映える。" },
+  { name: "Shippori Mincho", nameJp: "しっぽり明朝", category: "mincho", fontFamily: "var(--font-shippori)", weights: [400,500,600,700,800], note: "筆の入りを残した上品な明朝。本文・見出しともに美しく組める定番。" },
+  { name: "Noto Serif JP", nameJp: "Noto Serif JP", category: "mincho", fontFamily: "var(--font-noto-serif-jp)", weights: [300,400,500,700,900], note: "9ウェイトを揃える万能明朝。長文でも安定して組める安心感。" },
+  { name: "Kaisei Decol", nameJp: "解星デコール", category: "mincho", fontFamily: "var(--font-kaisei-decol)", weights: [400,500,700], note: "丸みのある柔らかな明朝。親しみやすい見出しに向く。" },
+  { name: "Hina Mincho", nameJp: "ひな明朝", category: "mincho", fontFamily: "var(--font-hina-mincho)", weights: [400], note: "細く繊細な一画。余白を生かした上品なタイトルに。" },
+
+  /* === ゴシック体 === */
+  { name: "Zen Kaku Gothic New", nameJp: "Zen 角ゴシック New", category: "gothic", fontFamily: "var(--font-zen-kaku)", weights: [300,400,500,700,900], note: "角ゴシックの新定番。視認性が高く UI に最適。", sampleWeight: 500 },
+  { name: "Noto Sans JP", nameJp: "Noto Sans JP", category: "gothic", fontFamily: "var(--font-noto-sans-jp)", weights: [300,400,500,700,900], note: "圧倒的な汎用性。あらゆる場面で破綻しない安心の書体。", sampleWeight: 500 },
+  { name: "M PLUS 1p", nameJp: "M PLUS 1p", category: "gothic", fontFamily: "var(--font-mplus1p)", weights: [400,500,700,800], note: "端正でモダンな角ゴ。数字・英字も整っている。", sampleWeight: 500 },
+  { name: "Zen Maru Gothic", nameJp: "Zen 丸ゴシック", category: "gothic", fontFamily: "var(--font-zen-maru)", weights: [400,500,700,900], note: "角を丸めた優しい印象。ポップな用途や子ども向けに。", sampleWeight: 500 },
+  { name: "Kosugi Maru", nameJp: "小杉丸", category: "gothic", fontFamily: "var(--font-kosugi-maru)", weights: [400], note: "軽快な丸ゴシック。カジュアルな見出しやバナーに。" },
+
+  /* === serif (Latin) === */
+  { name: "Crimson Text", category: "serif", fontFamily: "var(--font-crimson-text)", weights: [400,600,700], note: "読書のために設計された古典的本文セリフ。長文を上品に組める。", sampleWeight: 400 },
+  { name: "Marcellus", category: "serif", fontFamily: "var(--font-marcellus)", weights: [400], note: "ローマン碑文に着想を得た優雅な見出しセリフ。気品ある佇まい。", sampleWeight: 400 },
+  { name: "Cinzel", category: "serif", fontFamily: "var(--font-cinzel)", weights: [400,500,600,700,800,900], note: "クラシックな大文字のディスプレイセリフ。高級感のあるロゴに。", sampleWeight: 400 },
+  { name: "EB Garamond", category: "serif", fontFamily: "var(--font-eb-garamond)", weights: [400,500,600,700,800], note: "古典的なギャラモン系。知的で落ち着いた佇まい。", sampleWeight: 400 },
+  { name: "Libre Baskerville", category: "serif", fontFamily: "var(--font-libre-baskerville)", weights: [400,700], note: "バスカヴィル系の正統派。引用や本文に品よく。", sampleWeight: 400 },
+  { name: "Domine", category: "serif", fontFamily: "var(--font-domine)", weights: [400,500,600,700], note: "本文向けに最適化された頑健なセリフ。画面でも読みやすい。", sampleWeight: 400 },
+  { name: "Linden Hill", category: "serif", fontFamily: "var(--font-linden-hill)", weights: [400], note: "金属活字を思わせる繊細で優美なセリフ。エディトリアルに。", sampleWeight: 400 },
+  { name: "Prata", category: "serif", fontFamily: "var(--font-prata)", weights: [400], note: "ハイコントラストでモダンなディディオ系。華やかな見出しに。", sampleWeight: 400 },
+
+  /* === sans-serif (Latin) === */
+  { name: "Hanken Grotesk", category: "sans", fontFamily: "var(--font-hanken-grotesk)", weights: [300,400,500,600,700,800], note: "ニュートラルで親しみやすいジオメトリック・グロテスク。UI・ブランドに万能。", sampleWeight: 400 },
+  { name: "Inter", category: "sans", fontFamily: "var(--font-inter)", weights: [400,500,600,700], note: "UI のために設計された定番サンセリフ。数字や記号も明快。", sampleWeight: 400 },
+  { name: "Montserrat", category: "sans", fontFamily: "var(--font-montserrat)", weights: [400,500,600,700,800], note: "都会的で力強い。ロゴや大見出しによく合う。", sampleWeight: 500 },
+  { name: "Barlow Condensed", category: "sans", fontFamily: "var(--font-barlow-condensed)", weights: [300,400,500,600,700], note: "引き締まったコンデンス体。スポーティで力強い見出しに。", sampleWeight: 500 },
+  { name: "Questrial", category: "sans", fontFamily: "var(--font-questrial)", weights: [400], note: "細く端正なジオメトリック。ミニマルで上品な印象。", sampleWeight: 400 },
+  { name: "Lato", category: "sans", fontFamily: "var(--font-lato)", weights: [100,300,400,700,900], note: "温かみのある定番ヒューマニスト。本文から見出しまで万能。", sampleWeight: 400 },
+  { name: "Aldrich", category: "sans", fontFamily: "var(--font-aldrich)", weights: [400], note: "等幅感のあるテック調サンセリフ。未来的な見出しに。", sampleWeight: 400 },
+  { name: "Cousine", category: "sans", fontFamily: "var(--font-cousine)", weights: [400,700], note: "等幅のスラブ寄り書体。コードやデータ表示に最適。", sampleWeight: 400 },
+  { name: "Josefin Sans", category: "sans", fontFamily: "var(--font-josefin-sans)", weights: [300,400,500,600,700], note: "細身でエレガントなジオメトリック。ヴィンテージ感のある見出しに。", sampleWeight: 400 },
+  { name: "Roboto", category: "sans", fontFamily: "var(--font-roboto)", weights: [300,400,500,700,900], note: "Android の標準書体。中庸で読みやすく、あらゆる用途に万能。", sampleWeight: 400 },
+  { name: "Oswald", category: "sans", fontFamily: "var(--font-oswald)", weights: [300,400,500,600,700], note: "引き締まったコンデンス体。力強い大見出しやポスターに。", sampleWeight: 500 },
+
+  /* === 数字 (numerals) === */
+  { name: "Droid Serif", category: "numerals", fontFamily: "var(--font-droid-serif)", sample: "$1,234.56", weights: [400,700], note: "数字のプロポーションが吟味されたセリフ。画面でとても見やすい。", sampleWeight: 400 },
+  { name: "Crimson Text", category: "numerals", fontFamily: "var(--font-crimson-text)", sample: "$1,234.56", weights: [400,600,700], note: "ライニング・等幅ライニングに対応。海外でも幅広く使われる定番。", sampleWeight: 400 },
+  { name: "Old Standard TT", category: "numerals", fontFamily: "var(--font-old-standard-tt)", sample: "$1,234.56", weights: [400,700], note: "クラシックでエレガント。アンティークな雰囲気の数字デザイン。", sampleWeight: 400 },
+  { name: "Kameron", category: "numerals", fontFamily: "var(--font-kameron)", sample: "$1,234.56", weights: [400,500,600,700], note: "幅広なスラブセリフ。落ち着いた数字が表組みに映える。", sampleWeight: 400 },
+  { name: "Copse", category: "numerals", fontFamily: "var(--font-copse)", sample: "$1,234.56", weights: [400], note: "小さいサイズでも読みやすいスラブセリフ。可読性重視に。", sampleWeight: 400 },
+  { name: "Open Sans", category: "numerals", fontFamily: "var(--font-open-sans)", sample: "$1,234.56", weights: [300,400,500,600,700], note: "あらゆる場面で使える定番サンセリフ。数字も安定して明快。", sampleWeight: 400 },
+  { name: "Lato", category: "numerals", fontFamily: "var(--font-lato)", sample: "$1,234.56", weights: [100,300,400,700,900], note: "コントロールを抑えた柔らかな数字。Open Sans とは違う表情。", sampleWeight: 400 },
+  { name: "Roboto Condensed", category: "numerals", fontFamily: "var(--font-roboto-condensed)", sample: "$1,234.56", weights: [300,400,500,700], note: "等幅ライニング数字に対応したコンデンス体。桁が揃う。", sampleWeight: 400 },
+  { name: "Titillium Web", category: "numerals", fontFamily: "var(--font-titillium-web)", sample: "$1,234.56", weights: [300,400,600,700,900], note: "角張った厳格な印象。豊富なウエイトでデータ表示に強い。", sampleWeight: 400 },
+  { name: "Varela Round", category: "numerals", fontFamily: "var(--font-varela-round)", sample: "$1,234.56", weights: [400], note: "丸みのある親しみやすい数字。フレンドリーな表現に。", sampleWeight: 400 },
+];
+
+</script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+/* まとめ — Google Fonts おすすめまとめ. Mounted by index.html.
+   Layout: fixed yellow left sidebar (category card-buttons = in-page links)
+   + MV door (yellow, no buttons) + stacked per-category colored sections. */
+const { useState, useMemo, useEffect, useRef } = React;
+const { FontSpecimen, CategoryButton } = window.DesignSystem_74b1d1;
+const FONTS = window.FONT_DATA;
+const CATS = window.CATEGORY_META;
+const ORDER = ["mincho", "gothic", "serif", "sans", "numerals"];
+
+const SIDEBAR_W = 256;
+
+function scrollToId(id) {
+  if (id === "home") { window.scrollTo({ top: 0, behavior: "smooth" }); return; }
+  const el = document.getElementById(id);
+  if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: "smooth" });
+}
+
+/* ---------- Sidebar (fixed, main yellow) — category card-buttons ---------- */
+function Sidebar({ active }) {
+  return (
+    <aside style={{
+      position: "fixed", top: 0, left: 0, bottom: 0, width: SIDEBAR_W, zIndex: 30,
+      background: "var(--accent)", color: "var(--accent-ink)", overflowY: "auto",
+      display: "flex", flexDirection: "column", padding: "26px 18px", boxShadow: "var(--shadow-md)",
+    }}>
+      <button onClick={() => scrollToId("home")} style={{ cursor: "pointer", background: "none", border: "none",
+        padding: 0, textAlign: "left", marginBottom: 24 }}>
+        <p style={{ margin: 0, fontFamily: "var(--font-ui-display)", fontWeight: 600, fontSize: 24,
+          color: "var(--accent-ink)", lineHeight: 1.1 }}>フォント<br />まとめ</p>
+        <p style={{ margin: "8px 0 0", fontFamily: "var(--font-label)", fontSize: 10, fontWeight: 600,
+          letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--accent-ink)", opacity: 0.7 }}>
+          Google Fonts
+        </p>
+      </button>
+
+      <p style={{ margin: "0 0 10px 4px", fontFamily: "var(--font-label)", fontSize: 10, fontWeight: 600,
+        letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--accent-ink)", opacity: 0.6 }}>
+        カテゴリー
+      </p>
+      <nav style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+        {ORDER.map((k) => (
+          <CategoryButton
+            key={k}
+            category={k}
+            count={FONTS.filter((f) => f.category === k).length}
+            active={active === k}
+            onClick={() => scrollToId("cat-" + k)}
+          />
+        ))}
+      </nav>
+
+      <a href="https://fonts.google.com" target="_blank" rel="noopener noreferrer"
+        style={{ marginTop: "auto", paddingTop: 18, fontFamily: "var(--font-label)", fontSize: 12, fontWeight: 600,
+          color: "var(--accent-ink)", textDecoration: "none", opacity: 0.8 }}>
+        fonts.google.com ↗
+      </a>
+    </aside>
+  );
+}
+
+/* ---------- MV / 扉 (main yellow, no buttons) ---------- */
+function MV({ mobile }) {
+  return (
+    <section id="home" style={{ background: "var(--accent)", color: "var(--accent-ink)", minHeight: "100vh",
+      display: "flex", flexDirection: "column", justifyContent: "center", padding: "var(--sp-9)" }}>
+      <p style={{ margin: 0, fontFamily: "var(--font-label)", fontSize: 13, fontWeight: 600,
+        letterSpacing: "0.18em", textTransform: "uppercase", opacity: 0.7 }}>
+        Recommended Google Fonts
+      </p>
+      <h1 style={{ margin: "20px 0 0", fontFamily: "var(--font-ui-display)", fontWeight: 600,
+        fontSize: "clamp(44px, 6vw, 96px)", lineHeight: 1.3, letterSpacing: "-0.01em", textWrap: "balance",
+        maxWidth: "16ch" }}>
+        迷ったらこれ。<br />定番<span style={{ color: "#3153F6" }}>Google Fonts</span>
+      </h1>
+      <p style={{ margin: "26px 0 0", maxWidth: "54ch", fontFamily: "var(--font-ui-jp)", fontSize: "var(--fs-lead)",
+        lineHeight: "var(--lh-body)", color: "var(--accent-ink)", opacity: 0.92, textWrap: "pretty" }}>
+        Google Fonts から厳選したおすすめ書体を、<br />明朝体・ゴシック体・serif・sans-serif・数字の5分類で整理しました。
+      </p>
+      <p style={{ margin: "34px 0 0", display: "inline-flex", alignItems: "center", gap: 12,
+        fontFamily: "var(--font-ui-jp)", fontSize: "var(--fs-body)", fontWeight: 600, color: "var(--accent-ink)" }}>
+        <span aria-hidden="true" style={{ fontSize: 22 }}>{mobile ? "↓" : "←"}</span>
+        {mobile ? "下のメニューから選んでください。" : "左のカテゴリーから選んでください。"}
+      </p>
+    </section>
+  );
+}
+
+/* ---------- Category section (own background color) ---------- */
+function CategorySection({ catKey, mobile }) {
+  const c = CATS[catKey];
+  const HEADING_FONT = {
+    mincho: "'Shippori Mincho', 'EB Garamond', serif",
+    gothic: "'Noto Sans JP', 'Inter', sans-serif",
+    serif: "'EB Garamond', 'Shippori Mincho', serif",
+    sans: "'Inter', 'Noto Sans JP', sans-serif",
+    numerals: "'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif",
+  };
+  const headFont = HEADING_FONT[catKey] || "var(--font-ui-display)";
+  const ink = c.ink || "#fff";
+  const inkMuted = ink === "#fff" ? "rgba(255,255,255,0.92)" : "rgba(0,0,0,0.66)";
+  const [query, setQuery] = useState("");
+  const fonts = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return FONTS.filter((f) => f.category === catKey &&
+      (!q || f.name.toLowerCase().includes(q) || (f.nameJp || "").toLowerCase().includes(q)));
+  }, [catKey, query]);
+
+  return (
+    <section id={"cat-" + catKey} style={{ background: c.color, color: ink, scrollMarginTop: 0 }}>
+      {/* header — info in white text */}
+      <div style={{ padding: mobile ? "var(--sp-6) var(--sp-5) var(--sp-5)" : "var(--sp-8) var(--sp-9) var(--sp-7)" }}>
+        <h2 style={{ margin: 0, fontFamily: headFont, fontWeight: 600,
+          fontSize: "clamp(40px, 6vw, 84px)", lineHeight: 1.04, letterSpacing: "-0.01em" }}>{c.jp}</h2>
+        <p style={{ margin: "20px 0 0", maxWidth: "60ch", fontFamily: "var(--font-ui-jp)",
+          fontSize: "var(--fs-lead)", lineHeight: "var(--lh-body)", color: inkMuted, textWrap: "pretty" }}>
+          {c.desc}
+        </p>
+        <div style={{ display: "flex", alignItems: "center", gap: 18, marginTop: 28, flexWrap: "wrap" }}>
+          <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="このカテゴリー内を検索…"
+            style={{ fontFamily: "var(--font-ui-jp)", fontSize: 14, color: "var(--ink-1)", padding: "9px 15px",
+              minWidth: 220, background: "#fff", border: "none", borderRadius: "var(--radius-sm)", outline: "none" }} />
+          <span style={{ fontFamily: "var(--font-label)", fontSize: 13, fontWeight: 600, opacity: 0.9 }}>{fonts.length} 書体</span>
+        </div>
+      </div>
+
+      {/* font detail — white-background specimen cards */}
+      <div style={{ padding: mobile ? "0 var(--sp-5) var(--sp-6)" : "0 var(--sp-9) var(--sp-8)" }}>
+        {fonts.length ? (
+          <div style={{ display: "grid", gridTemplateColumns: mobile ? "1fr" : "repeat(auto-fill, minmax(340px, 1fr))", gap: "var(--sp-5)" }}>
+            {fonts.map((f, i) => <FontSpecimen key={f.name} {...f} rank={i + 1} />)}
+          </div>
+        ) : (
+          <div style={{ background: "rgba(255,255,255,0.14)", borderRadius: "var(--radius-md)",
+            padding: "var(--sp-7)", textAlign: "center" }}>
+            <p style={{ fontFamily: "var(--font-ui-display)", fontSize: 24, margin: 0 }}>該当する書体が見つかりません</p>
+            <p style={{ fontFamily: "var(--font-ui-jp)", margin: "8px 0 0", opacity: 0.85 }}>「{query}」の検索結果は0件です。</p>
+          </div>
+        )}
+      </div>
+
+    </section>
+  );
+}
+
+/* ---------- responsive helper + mobile top menu ---------- */
+function useIsMobile(bp = 900) {
+  const [m, setM] = useState(typeof window !== "undefined" && window.innerWidth <= bp);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: " + bp + "px)");
+    const on = () => setM(mq.matches);
+    on();
+    mq.addEventListener("change", on);
+    return () => mq.removeEventListener("change", on);
+  }, [bp]);
+  return m;
+}
+
+/* horizontal category menu — flows after the MV, sticks to top once passed */
+function MobileMenu({ active }) {
+  return (
+    <nav style={{ position: "sticky", top: 0, zIndex: 40, background: "var(--accent)",
+      boxShadow: "var(--shadow-md)", padding: "10px 12px", display: "flex", gap: 8,
+      overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
+      {ORDER.map((k) => {
+        const c = CATS[k];
+        const on = active === k;
+        return (
+          <button key={k} onClick={() => scrollToId("cat-" + k)} style={{
+            flex: "0 0 auto", cursor: "pointer", border: "none", borderRadius: "var(--radius-pill)",
+            padding: "9px 16px", fontFamily: "var(--font-ui-jp)", fontSize: 14, fontWeight: 600,
+            whiteSpace: "nowrap",
+            background: on ? "var(--paper-pure)" : c.color,
+            color: on ? c.color : (c.ink || "#fff"),
+            boxShadow: on ? "0 4px 14px rgba(27,25,22,0.18)" : "none",
+            transition: "background var(--dur) var(--ease-out), color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out)",
+          }}>{c.jp}</button>
+        );
+      })}
+    </nav>
+  );
+}
+
+/* ---------- App ---------- */
+function App() {
+  const [active, setActive] = useState("home");
+  const isMobile = useIsMobile();
+
+  /* scroll-spy: highlight the section currently in view */
+  useEffect(() => {
+    const ids = ["home", ...ORDER.map((k) => "cat-" + k)];
+    const onScroll = () => {
+      const mid = window.scrollY + window.innerHeight * 0.35;
+      let cur = "home";
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= mid) cur = id;
+      }
+      setActive(cur === "home" ? "home" : cur.replace("cat-", ""));
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const backToTop = (
+    <div style={{ background: "var(--accent)", display: "flex", justifyContent: "center",
+      padding: "var(--sp-8) var(--sp-9)" }}>
+      <button onClick={() => scrollToId("home")} style={{ cursor: "pointer", background: "var(--accent-ink)",
+        border: "none", color: "var(--accent)", borderRadius: "var(--radius-md)", fontFamily: "var(--font-ui-jp)",
+        fontSize: 15, fontWeight: 600, padding: "14px 28px", display: "inline-flex", alignItems: "center", gap: 10 }}>
+        <span aria-hidden="true" style={{ fontSize: 18 }}>↑</span>
+        ページトップへ戻る
+      </button>
+    </div>
+  );
+
+  /* ---- mobile: stacked MV → sticky menu → sections ---- */
+  if (isMobile) {
+    return (
+      <div style={{ minHeight: "100vh", background: "var(--accent)" }}>
+        <MV mobile />
+        <MobileMenu active={active} />
+        {ORDER.map((k) => <CategorySection key={k} catKey={k} mobile />)}
+        {backToTop}
+      </div>
+    );
+  }
+
+  /* ---- desktop: fixed left sidebar ---- */
+  return (
+    <div style={{ minHeight: "100vh", background: "var(--accent)" }}>
+      <Sidebar active={active} />
+      <main style={{ marginLeft: SIDEBAR_W, minHeight: "100vh" }}>
+        <MV />
+        {ORDER.map((k) => <CategorySection key={k} catKey={k} />)}
+        {backToTop}
+      </main>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
+  </script>
+</body>
+</html>
